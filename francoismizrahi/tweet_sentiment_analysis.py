@@ -1,9 +1,3 @@
-# from francoismizrahi.twitter_api import TwitterApi
-# from francoismizrahi.text_preprocessing import TextPreprocessing
-# from francoismizrahi.sentiment_analysis import SentimentAnalysis
-
-
-from cv2 import mean
 import twitter_api
 import text_preprocessing
 import sentiment_analysis
