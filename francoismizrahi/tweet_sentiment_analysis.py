@@ -3,6 +3,7 @@
 # from francoismizrahi.sentiment_analysis import SentimentAnalysis
 
 
+from cv2 import mean
 import twitter_api
 import text_preprocessing
 import sentiment_analysis
@@ -37,8 +38,27 @@ class TweetsSentimentAnalysis:
         return sentiments
 
 if __name__ == '__main__':
+    keyword = input("Enter your keyword: ")
+    max_results = input("How many Tweets do you want? (Between 10 and 100): ")
     print("Starting...")
-    t = TweetsSentimentAnalysis(keyword="coca cola", max_results=20)
+    t = TweetsSentimentAnalysis(keyword=keyword, max_results=max_results)
     sentiments = t.get_tweets_sentiment_analysis()
-    print("Result:")
-    print(sentiments)
+    
+    num_sentiments = {'POSITIVE': 0, 'NEGATIVE': 0, 'NEUTRAL': 0}
+    scores = []
+    for result in sentiments:
+
+        scores.append(float(result['score']))
+
+        if result['label'] == 'POSITIVE':
+            num_sentiments['POSITIVE'] += 1
+        elif result['label'] == 'NEGATIVE':
+            num_sentiments['NEGATIVE'] += 1
+        else:
+            num_sentiments['NEUTRAL'] += 1
+
+    print("Results:")
+    print(f"We found {num_sentiments['POSITIVE']} Positive Tweets")
+    print(f"We found {num_sentiments['NEGATIVE']} Negative Tweets")
+    print(f"We found {num_sentiments['NEUTRAL']} Neutral Tweets")
+    print(f"The average sentiment score was {sum(scores) / len(scores)}. (1: Perfect positif, 0: Perfect Negatif)")
