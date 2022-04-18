@@ -3,7 +3,7 @@ from  nltk.stem import SnowballStemmer
 import re
 
 
-class Preprocessing:
+class TextPreprocessing:
 
     def __init__(self):
         # Text Cleaning
@@ -38,5 +38,5 @@ class Preprocessing:
         return df
 
 if __name__ == '__main__':
-    preprocessing = Preprocessing()
-    print(preprocessing.preprocess("@@ Hello word"))
+    preprocessing = TextPreprocessing()
+    print(preprocessing.preprocess("@@ Hello word", stem = False, keep_stop_words = []))

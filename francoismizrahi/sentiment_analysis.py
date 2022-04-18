@@ -4,7 +4,7 @@ from keras.models import Sequential, load_model # Add 'load_model'
 from joblib import dump, load # For reading the Tokenizer Pickle
 import time
 
-class sentiment_analysis:
+class SentimentAnalysis:
 
     def __init__(self):
         self.KERAS_MODEL = "data/model.h5"
@@ -46,8 +46,9 @@ class sentiment_analysis:
 
         return {"label": label, "score": float(score), "elapsed_time": time.time()-self.start_at}
 
+
 if __name__ == '__main__':
-    sentiment_analysis = sentiment_analysis()
+    sentiment_analysis = SentimentAnalysis()
     print(sentiment_analysis.predict("I love the music"))
     print(sentiment_analysis.predict("I hate the music"))
 

@@ -3,7 +3,7 @@ from tweepy import Client
 from datetime import date, timedelta
 
 
-class Twitter_api:
+class TwitterApi:
 
     def __init__(self):
         self.Bearer_Token = Bearer_Token
@@ -30,7 +30,7 @@ class Twitter_api:
         return tweets
 
 if __name__ == '__main__':
-    twitter_api = Twitter_api()
+    twitter_api = TwitterApi()
     tweets = twitter_api.get_tweets(keyword= "covid", max_results=10)
     for tweet in tweets.data:
         print("\n###################\n")
