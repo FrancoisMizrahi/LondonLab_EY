@@ -3,6 +3,8 @@ import text_preprocessing
 import sentiment_analysis
 
 
+# comments
+
 class TweetsSentimentAnalysis:
 
     def __init__(self, keyword="covid", max_results=10, stem=False, keep_stop_words=[], include_neutral=True):
