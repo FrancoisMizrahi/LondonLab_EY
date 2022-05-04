@@ -8,10 +8,12 @@ def twitter_scapper(keyword, since, until):
     print(f"{keyword} since:{since} until:{until}")
     tweets = sntwitter.TwitterSearchScraper(f"{keyword} lang:en since:{since} until:{until}")
     for i,tweet in enumerate(tweets.get_items()):
-        print(str(tweet.date) + tweet.content)
+        print("# # # # # # # # # # # # # # # # # # # # # # # # # # # # #")
+        print(tweet.date)
+        print(tweet.content)
         tweets_list.append([tweet.date, tweet.id, tweet.content])
     df = pd.DataFrame(tweets_list, columns=['Datetime', 'Tweet Id', 'Text'])
-    df.to_csv(f"data/tweets/{keyword}_{since}_{until}.csv")
+    df.to_csv(f"data/tweets/eng_{keyword}_{since}_{until}.csv")
 
 def seg_date(keyword, since, until):
     d_since = pd.to_datetime(since, format='%Y-%m-%d')
@@ -36,4 +38,4 @@ def seg_date(keyword, since, until):
 
 
 if __name__ == '__main__':
-    seg_date("facebook data", "2018-03-02", "2018-08-01")
+    seg_date("facebook data", "2018-04-01", "2018-06-01")
