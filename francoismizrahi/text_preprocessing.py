@@ -33,9 +33,9 @@ class TextPreprocessing:
                     tokens.append(token)
         return " ".join(tokens)
 
-    def apply_preprocessing(self, df, stem = False, keep_stop_words = []):
-        df.text = df.text.apply(lambda x: self.preprocess(x, stem, keep_stop_words))
-        return df
+    def apply_preprocessing(self, df_series, stem = False, keep_stop_words = []):
+        df_series = df_series.apply(lambda x: self.preprocess(x, stem, keep_stop_words))
+        return df_series
 
 if __name__ == '__main__':
     preprocessing = TextPreprocessing()
