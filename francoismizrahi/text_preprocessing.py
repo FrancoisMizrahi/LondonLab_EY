@@ -7,7 +7,7 @@ class TextPreprocessing:
 
     def __init__(self):
         # Text Cleaning
-        self.text_cleaning_regex = "@\S+|https?:\S+|http?:\S|[^A-Za-z0-9]+"
+        self.text_cleaning_regex = "\r@\S+|https?:\S+|http?:\S|[^A-Za-z0-9]+"
         # Stop words are filler words that are not supposed to add values to the sentence
         self.stop_words = stopwords.words("english")
         # Stemmer allows to only go back to the root of the words
@@ -39,4 +39,6 @@ class TextPreprocessing:
 
 if __name__ == '__main__':
     preprocessing = TextPreprocessing()
-    print(preprocessing.preprocess("@@ Hello word", stem = False, keep_stop_words = []))
+    text = "@@ Hello word"
+    print(text)
+    print(preprocessing.preprocess(text, stem = False, keep_stop_words = []))
