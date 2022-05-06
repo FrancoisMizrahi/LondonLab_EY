@@ -35,7 +35,7 @@ def get_sentiments(series):
 #     df.to_csv(f"data/clean_tweets/clean_{file[-43:]}")
 
 
-df = pd.read_csv("/Users/francoismizrahi/Documents/LBS/Courses/London Lab/data/tweets/eng_facebook_data_2018-03-02_2018-04-01.csv",
+df = pd.read_csv("/Users/francoismizrahi/Documents/LBS/Courses/London Lab/data/tweets/eng_facebook_data_2018-01-01_2018-01-31.csv",
     lineterminator='\n')
 print(f"Number of tweets to process: {len(df)}")
 df.Text = clean_tweets(df.Text)
@@ -43,4 +43,4 @@ Sent = get_sentiments(df.Text)
 df["label"] = Sent.apply(lambda x: x["label"])
 df["score"] = Sent.apply(lambda x: x["score"])
 df["elapsed_time"] = Sent.apply(lambda x: x["elapsed_time"])
-df.to_csv(f"data/clean_tweets/clean_eng_facebook_data_2018-03-02_2018-04-01.csv")
+df.to_csv(f"data/clean_tweets/clean_eng_facebook_data_2018-01-01_2018-01-31.csv")
